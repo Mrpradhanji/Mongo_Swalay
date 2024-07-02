@@ -1,4 +1,5 @@
 
+import { kMaxLength } from "buffer";
 import mongoose from "mongoose";
 
 const tableSchema = new mongoose.Schema({
@@ -18,6 +19,7 @@ const tableSchema = new mongoose.Schema({
   status: {
     type: String,
     default: '1',
+    kMaxLength : 11,
   },
   comment: {
     type: String,
@@ -28,6 +30,10 @@ const tableSchema = new mongoose.Schema({
     default: null,
   },
 });
+
+tableSchema.index({ id: 1 }, { unique: true });
+
+
 const Pay = mongoose.models.Pay || mongoose.model("Pay",tableSchema);
 
 export default Pay;

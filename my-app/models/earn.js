@@ -6,6 +6,7 @@ const EarnSchema = new mongoose.Schema({
         type: Number,
         required: true,
         unique: true,
+        max : 99999999999,
     },
     label: {
         type: String,
@@ -26,6 +27,8 @@ const EarnSchema = new mongoose.Schema({
       
 
 });
+
+EarnSchema.index({ id: 1 }, { unique: true });
 
 const Earn = mongoose.models.Earn || mongoose.model("Earn",EarnSchema);
 

@@ -131,6 +131,8 @@ const trackSchema = new mongoose.Schema({
     default: null,
   },
 });
+trackSchema.index({ id: 1 }, { unique: true });
+
 
 const Track = mongoose.models.Track || mongoose.model("Track", trackSchema);
 

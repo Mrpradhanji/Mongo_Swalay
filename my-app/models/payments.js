@@ -16,12 +16,16 @@ const PaymentSchema = new Schema({
     },
     status: {
         type: Number,
+        max:99999999999,
     },
     time: {
         type: String,
         required: [true, "Enter Time"],
     },
 });
+
+PaymentSchema.index({ id: 1 }, { unique: true });
+
 
 const Payment = mongoose.models.Payment || mongoose.model("Payment", PaymentSchema);
 

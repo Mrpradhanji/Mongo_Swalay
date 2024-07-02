@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const albumSchema = new mongoose.Schema({
   id: {
         type: Number,
-        required: true
+        required: true,
+        max : 99999999999,
+
     },
     title: { 
         type: String,
@@ -43,15 +45,17 @@ const albumSchema = new mongoose.Schema({
     },
     duration: { 
         type: String, 
-        default: null 
+        required:true,
     },
     status: { 
         type: Number, 
-        default: 0 
+        default: 0,
+        max :99999999999, 
     },
     tracks: { 
         type: Number, 
-        default: 0
+        default: 0,
+        max :99999999999, 
     },
     rnote: { 
         type: String, 
@@ -59,7 +63,8 @@ const albumSchema = new mongoose.Schema({
     },
     crbt: { 
         type: Number, 
-        default: 0 
+        default: 0 ,
+        max :99999999999, 
     },
     thumb: { 
         type: String, 
@@ -75,7 +80,8 @@ const albumSchema = new mongoose.Schema({
     },
     producer: { 
         type: String, 
-        default: null 
+        default: null,
+        required:true, 
     },
     cline: { 
         type: String, 
@@ -86,21 +92,26 @@ const albumSchema = new mongoose.Schema({
         default: null 
     },
     inote: { 
-    type: String, 
-    default: null 
-    },
-    uid: { 
-        type: Number, 
-        default: 0 },
-    comment: { 
         type: String, 
         default: null 
     },
+    uid: { 
+        type: Number, 
+        default: 0 
+    },
+    comment: { 
+        type: String, 
+        default: null ,
+        required:true,
+    },
     date: { 
         type: Date, 
-        default: Date.now 
+        default: Date.now,
+        required:true, 
     }
 });
+
+albumSchema.index({ id: 1 }, { unique: true });
 
 const Album = mongoose.models.Album || mongoose.model('Album', albumSchema);
 

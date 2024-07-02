@@ -26,7 +26,7 @@ const AnotationSchema = new mongoose.Schema({
   },
 }); 
 
-//earningSchema.index({ id: 1 }, { unique: true }); // Create a unique index on the id field
+AnotationSchema.index({ id: 1 }, { unique: true }); // Create a unique index on the id field
 
 const Anotation = mongoose.models.Anotation || mongoose.model('Anotation', AnotationSchema);
 

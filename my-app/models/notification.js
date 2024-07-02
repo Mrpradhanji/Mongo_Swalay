@@ -16,6 +16,7 @@ const NotifySchema = new mongoose.Schema({
         default:null
     },
 });
+NotifySchema.index({ id: 1 }, { unique: true });
 
 const Notify = mongoose.models.Notify || mongoose.model("Notify",NotifySchema);
 
