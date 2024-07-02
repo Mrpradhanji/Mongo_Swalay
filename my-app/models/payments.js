@@ -1,52 +1,28 @@
+import mongoose, { Schema } from 'mongoose';
 
-import mongoose from 'mongoose';
-
-const PaymentSchema = new mongoose.Schema({
-
+const PaymentSchema = new Schema({
     id: {
-        type :Number,
-       /* validate :{
-            validator : function(value){
-                return value.toString().length<=11;
-            },
-            message : (props)=>`${props.value} exceeds the 11 digit limit`
-        },*/
-        //required : [true, "Please provide a id"],
-        unique : true,
-        required:true,
+        type: Number,
+        required: [true, "Please provide an id"],
+        unique: true,
     },
-    label : {
-        type : String,
-        default : null,
-        //required : [true,"Enter payment label"],
+    label: {
+        type: String,
+        required: [true, "Enter payment label"],
     },
-    amount :{
-        type : String,
-        default : null,
-        //required : [true,"Enter Amount"],
-
+    amount: {
+        type: String,
+        required: [true, "Enter Amount"],
     },
-    status:{
-        type : Number,
-        default : null,
-        /*validate:{
-            validator:function(value){
-                return value.toString().length<=11;
-            },
-            message : (props) =>`{props.value} exceeds the 11 digit limit`
-        },*/
-        
-
+    status: {
+        type: Number,
     },
-    time:{
-        type:String,
-        default : null,
-       // required : [true,'Enter Time']
+    time: {
+        type: String,
+        required: [true, "Enter Time"],
     },
-   
 });
-// if taken User then small all and pluralise the variable
-const Payment = mongoose.models.Payment || mongoose.model("Payment",PaymentSchema);
 
+const Payment = mongoose.models.Payment || mongoose.model("Payment", PaymentSchema);
 
 export default Payment;
